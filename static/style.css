@@ -1,0 +1,502 @@
+/* ==========================================================================
+   Loan Approval Prediction — Stylesheet
+   Developed by Mohammad Akif Akhtar
+   ========================================================================== */
+
+/* ---------- Reset ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', 'Poppins', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: #1c2333;
+    background: linear-gradient(-45deg, #4f46e5, #7c3aed, #2563eb, #0ea5e9);
+    background-size: 400% 400%;
+    animation: gradientFlow 16s ease infinite;
+    position: relative;
+}
+
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* ---------- Background decorative shapes ---------- */
+.background-shapes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.35;
+}
+
+.shape-one {
+    width: 420px;
+    height: 420px;
+    background: #22d3ee;
+    top: -120px;
+    left: -100px;
+    animation: floatShape 14s ease-in-out infinite;
+}
+
+.shape-two {
+    width: 320px;
+    height: 320px;
+    background: #a855f7;
+    bottom: -80px;
+    right: -60px;
+    animation: floatShape 18s ease-in-out infinite reverse;
+}
+
+.shape-three {
+    width: 260px;
+    height: 260px;
+    background: #f472b6;
+    top: 45%;
+    right: 10%;
+    animation: floatShape 20s ease-in-out infinite;
+}
+
+@keyframes floatShape {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(30px, -40px) scale(1.08);
+    }
+}
+
+/* ---------- Layout wrapper ---------- */
+.page-wrapper {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 20px 24px;
+}
+
+/* ---------- Header ---------- */
+.app-header {
+    text-align: center;
+    margin-bottom: 36px;
+    animation: fadeInDown 0.8s ease;
+}
+
+.header-icon {
+    font-size: 46px;
+    margin-bottom: 8px;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.25));
+}
+
+.app-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 2.6rem;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    text-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+}
+
+.app-subtitle {
+    margin-top: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------- Main content ---------- */
+.main-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
+
+/* ---------- Glassmorphism card ---------- */
+.glass-card {
+    width: 100%;
+    max-width: 520px;
+    background: rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 26px;
+    padding: 40px 36px;
+    box-shadow:
+        0 20px 45px rgba(15, 23, 42, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    animation: fadeInUp 0.9s ease;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+        0 28px 55px rgba(15, 23, 42, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------- Form ---------- */
+.loan-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.3px;
+    padding-left: 4px;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 16px;
+    font-size: 1.1rem;
+    opacity: 0.85;
+    pointer-events: none;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 14px 16px 14px 46px;
+    border-radius: 14px;
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.92);
+    color: #1c2333;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    outline: none;
+    transition: border 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, transform 0.2s ease;
+}
+
+.input-wrapper input::placeholder {
+    color: #8b94a8;
+    font-weight: 400;
+}
+
+.input-wrapper input:hover {
+    background: #ffffff;
+}
+
+.input-wrapper input:focus {
+    border-color: #6366f1;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.25);
+    transform: translateY(-2px);
+}
+
+.input-wrapper input:invalid:not(:placeholder-shown) {
+    border-color: #f87171;
+}
+
+/* ---------- Predict Button ---------- */
+.predict-btn {
+    margin-top: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 24px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
+    background-size: 200% 200%;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-position 0.6s ease;
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.45);
+}
+
+.predict-btn:hover {
+    transform: translateY(-3px) scale(1.015);
+    background-position: 100% 0%;
+    box-shadow: 0 16px 32px rgba(139, 92, 246, 0.55);
+}
+
+.predict-btn:active {
+    transform: translateY(0) scale(0.985);
+    box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4);
+}
+
+.btn-icon {
+    transition: transform 0.3s ease;
+}
+
+.predict-btn:hover .btn-icon {
+    transform: translateX(6px);
+}
+
+/* ---------- Result Card ---------- */
+.result-card {
+    margin-top: 30px;
+    padding: 26px 24px;
+    border-radius: 18px;
+    text-align: center;
+    animation: popIn 0.5s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.9) translateY(12px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.result-icon {
+    font-size: 2.6rem;
+    margin-bottom: 10px;
+}
+
+.result-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.result-message {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    font-weight: 500;
+    opacity: 0.95;
+}
+
+.result-card.approved {
+    background: rgba(34, 197, 94, 0.18);
+    border: 1.5px solid rgba(34, 197, 94, 0.55);
+    color: #dcfce7;
+    box-shadow: 0 10px 30px rgba(34, 197, 94, 0.25);
+}
+
+.result-card.approved .result-title {
+    color: #ffffff;
+}
+
+.result-card.rejected {
+    background: rgba(239, 68, 68, 0.18);
+    border: 1.5px solid rgba(239, 68, 68, 0.55);
+    color: #fee2e2;
+    box-shadow: 0 10px 30px rgba(239, 68, 68, 0.25);
+}
+
+.result-card.rejected .result-title {
+    color: #ffffff;
+}
+
+.result-card.error {
+    background: rgba(250, 204, 21, 0.18);
+    border: 1.5px solid rgba(250, 204, 21, 0.55);
+    color: #fef9c3;
+    box-shadow: 0 10px 30px rgba(250, 204, 21, 0.2);
+}
+
+.result-card.error .result-title {
+    color: #ffffff;
+}
+
+/* ---------- Footer ---------- */
+.app-footer {
+    margin-top: 40px;
+    text-align: center;
+    padding: 16px 0 8px;
+}
+
+.app-footer p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+.footer-name {
+    font-weight: 700;
+    color: #ffffff;
+    background: linear-gradient(135deg, #f472b6, #facc15);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ---------- Scrollbar styling ---------- */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* ---------- Responsive Media Queries ---------- */
+@media (max-width: 640px) {
+    .app-title {
+        font-size: 2rem;
+    }
+
+    .app-subtitle {
+        font-size: 0.85rem;
+        letter-spacing: 1.4px;
+    }
+
+    .glass-card {
+        padding: 30px 22px;
+        border-radius: 20px;
+    }
+
+    .predict-btn {
+        font-size: 0.98rem;
+        padding: 14px 20px;
+    }
+
+    .result-title {
+        font-size: 1.2rem;
+    }
+
+    .shape-one,
+    .shape-two,
+    .shape-three {
+        filter: blur(40px);
+    }
+}
+
+@media (max-width: 400px) {
+    .page-wrapper {
+        padding: 32px 14px 20px;
+    }
+
+    .header-icon {
+        font-size: 38px;
+    }
+
+    .app-title {
+        font-size: 1.7rem;
+    }
+
+    .glass-card {
+        padding: 24px 18px;
+    }
+
+    .input-wrapper input {
+        font-size: 0.92rem;
+        padding: 12px 14px 12px 42px;
+    }
+
+    .input-icon {
+        left: 14px;
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .glass-card {
+        max-width: 560px;
+        padding: 44px 42px;
+    }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ---------- Focus visibility for accessibility ---------- */
+.predict-btn:focus-visible,
+.input-wrapper input:focus-visible {
+    outline: 3px solid #facc15;
+    outline-offset: 2px;
+}
